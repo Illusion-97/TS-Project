@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ecole</title>
+</head>
+<body>
+<div id="pres-format"></div>
+</body>
+<script>
+    var __extends = (this && this.__extends) || (function () {
+        var extendStatics = function (d, b) {
+            extendStatics = Object.setPrototypeOf ||
+                ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+            return extendStatics(d, b);
+        };
+        return function (d, b) {
+            if (typeof b !== "function" && b !== null)
+                throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+            extendStatics(d, b);
+            function __() { this.constructor = d; }
+            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+        };
+    })();
+    var ecole;
+    (function (ecole) {
+        var Personne = /** @class */ (function () {
+            function Personne(nom, prenom, genre, age, taille, poids) {
+                this._nom = nom;
+                this._prenom = prenom;
+                this._genre = genre;
+                this._age = age;
+                this._taille = taille;
+                this._poids = poids;
+            }
+            Object.defineProperty(Personne.prototype, "nom", {
+                get: function () {
+                    return this._nom;
+                },
+                set: function (value) {
+                    this._nom = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Object.defineProperty(Personne.prototype, "prenom", {
+                get: function () {
+                    return this._prenom;
+                },
+                set: function (value) {
+                    this._prenom = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Object.defineProperty(Personne.prototype, "genre", {
+                get: function () {
+                    return this._genre;
+                },
+                set: function (value) {
+                    this._genre = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Object.defineProperty(Personne.prototype, "age", {
+                get: function () {
+                    return this._age;
+                },
+                set: function (value) {
+                    this._age = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Object.defineProperty(Personne.prototype, "taille", {
+                get: function () {
+                    return this._taille;
+                },
+                set: function (value) {
+                    this._taille = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Object.defineProperty(Personne.prototype, "poids", {
+                get: function () {
+                    return this._poids;
+                },
+                set: function (value) {
+                    this._poids = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            return Personne;
+        }());
+        ecole.Personne = Personne;
+        var Cours = /** @class */ (function () {
+            function Cours(subject) {
+                this._subject = subject;
+            }
+            Object.defineProperty(Cours.prototype, "subject", {
+                get: function () {
+                    return this._subject;
+                },
+                set: function (value) {
+                    this._subject = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            return Cours;
+        }());
+        ecole.Cours = Cours;
+        var Etudiant = /** @class */ (function (_super) {
+            __extends(Etudiant, _super);
+            function Etudiant(nom, prenom, genre, age, taille, poids, promotion) {
+                var _this = _super.call(this, nom, prenom, genre, age, taille, poids) || this;
+                _this._promotion = promotion;
+                return _this;
+            }
+            Object.defineProperty(Etudiant.prototype, "promotion", {
+                get: function () {
+                    return this._promotion;
+                },
+                set: function (value) {
+                    this._promotion = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            return Etudiant;
+        }(Personne));
+        ecole.Etudiant = Etudiant;
+        var Formateur = /** @class */ (function (_super) {
+            __extends(Formateur, _super);
+            function Formateur(nom, prenom, genre, age, taille, poids, list) {
+                var _this = _super.call(this, nom, prenom, genre, age, taille, poids) || this;
+                _this._listCours = list;
+                return _this;
+            }
+            Object.defineProperty(Formateur.prototype, "listCours", {
+                get: function () {
+                    return this._listCours;
+                },
+                set: function (value) {
+                    this._listCours = value;
+                },
+                enumerable: false,
+                configurable: true
+            });
+            Formateur.prototype.sePresenter = function () {
+                var pres = "Je suis " + this.nom + " " + this.prenom + " et de dispense les cours de ";
+                for (var i = 0; i < this.listCours.length; i++) {
+                    if (this.listCours[i] != null)
+                        pres += "<br>" + this.listCours[i].subject;
+                }
+                return pres;
+            };
+            return Formateur;
+        }(Personne));
+        ecole.Formateur = Formateur;
+    })(ecole || (ecole = {}));
+    var cours = [new ecole.Cours("Philosopie"), new ecole.Cours("Français"), new ecole.Cours("Sociologie")];
+    var jhonDoe = new ecole.Formateur("Jhon", "Doe", "H", 45, 183, 72, cours);
+    document.querySelector("#pres-format").innerHTML = "<p>" + jhonDoe.sePresenter() + "</p>";
+
+</script>
+</html>
